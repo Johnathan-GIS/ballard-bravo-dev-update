@@ -4,6 +4,12 @@
 
 console.log("in signin dot js");
 
+function toggleMenu() {
+    let navLinks = document.getElementById("navLinks");
+
+    navLinks.classList.toggle("show");
+}
+
 const signinBtn = document.querySelector("#signin-btn");
 const pwdBox = document.querySelector("#pwd-box");
 const hardCodePwd = 'explore';
