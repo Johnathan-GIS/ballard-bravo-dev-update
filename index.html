@@ -3,102 +3,330 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Home - Amazing Travels</title>
+    <!-- Bootstrap CSS & Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="styles/style.css">
-    <h1>Amazing Travels</h1>
   </head>
 
-  <body>
+  <body class="bg-light text-dark">
 
-    <nav class="navbar">
-        <h2 class="logo">Fish Game</h2>
-
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="game.html">Game</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </nav>
-
-    <p>You get to see this amazing world</p>
-    <p><a href="https://github.com/Johnathan-GIS/" class="btn-solid theme-primary">Go to Johnathan Ballard GitHub</a></p>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pages/signin.html">Sign In</a></li>
-      </ul>
-    </nav>
-    <img src="images/blue-ridge-image.webp" alt="Blue Ridge Mountains" />
-    <div class="travel-container">
-      <div class="travel-regions">
-        <div class="southwest">
-          <h2>Southwest region</h2>
-          <p>See the sites of Albuquerque, Phoenix, and Las Vegas.</p>
-          <section class="card" style="max-width: 320px">
-  <img src="mages/albuquerque.jpg" class="card-img-top" alt="Albuquerque">
-  <div class="card-body">
-    <h4 class="card-title">Albuquerque</h4>
-    <p class="card-text">Southwest Explorations.</p>
-    <a href="https://www.visitalbuquerque.org" class="btn-solid theme-primary">Go to Albuquerque</a>
-  </div>
-</section>
-        </div>
-        <div class="northeast">
-          <h2>Northeast region</h2>
-          <p>Discover the charm of New York City, Boston, and Philadelphia.</p>
-          <section class="card" style="max-width: 320px">
-  <img src="images/hershey-park.jpg" class="card-img-top" alt="Hershey Park">
-  <div class="card-body">
-    <h4 class="card-title">Hershey Park</h4>
-    <p class="card-text">Wonderous beginnings.</p>
-    <a href="https://www.hersheypa.com/" class="btn-solid theme-primary">Go to Hershey Park</a>
-  </div>
-</section>
-        </div>
-        <div class="midwest">
-          <h2>Midwest region</h2>
-          <p>
-            Experience the heart of middle America from Chicago, St. Louis,
-            Minneapolis and Detroit.
-          </p>
-          <section class="card" style="max-width: 320px">
-  <img src="images/springfield-missouri.jpg" class="card-img-top" alt="Springfield, Missouri">
-  <div class="card-body">
-    <h4 class="card-title">Springfield, Missouri</h4>
-    <p class="card-text">Middle hidden gems.</p>
-    <a href="https://www.springfieldmo.org/" class="btn-solid theme-primary">Go to Springfield, Missouri</a>
-  </div>
-</section>
-        </div>
-        <div class="southeast">
-          <h2>Southeast region</h2>
-          <p>
-            Discover the beautiful cites of the Southeast like Atlanta,
-            Nashville, Miami, and Charleston.
-          </p>
-          <section class="card" style="max-width: 320px">
-  <img src="images/outer-banks-image.jpg" class="card-img-top" alt="Outer Banks">
-  <div class="card-body">
-    <h4 class="card-title">Outer Banks</h4>
-    <p class="card-text">islands of great adventure.</p>
-    <a href="https://www.outerbanks.org/" class="btn-solid theme-primary">Go to Outer Banks</a>
-  </div>
-</section>
+    <!-- Toast / Status Message Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100">
+      <div id="statusToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body" id="toastMessage">
+            Welcome back!
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
       </div>
     </div>
+
+    <!-- Layout: Navigation & User Account Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand mb-0 h1" href="index.html">🌏 Amazing Travels</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse justify-content-between" id="navLinks">
+            <ul class="navbar-nav align-items-center gap-3">
+              <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="pages/signin.html">Sign In</a></li>
+              <li class="nav-item">
+                <a href="https://github.com/Johnathan-GIS/" class="nav-link" target="_blank" rel="noopener noreferrer">
+                  GitHub Profile <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/Johnathan-GIS/ballard-bravo-dev-update" class="nav-link" target="_blank" rel="noopener noreferrer">
+                  Source Code <i class="bi bi-code-slash"></i>
+                </a>
+              </li>
+            </ul>
+
+            <!-- User Account Control Status -->
+            <div class="d-flex align-items-center text-light gap-2 mt-3 mt-lg-0" id="userAccountSection">
+              <span class="badge bg-primary">Admin</span>
+              <span class="small me-2">User: <strong>Johnathan Ballard</strong></span>
+              <button class="btn btn-outline-light btn-sm" onclick="signOut()">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Stretched Hero Banner Image -->
+    <section class="position-relative overflow-hidden mb-5">
+      <div class="w-100" style="height: 380px; background: url('images/blue-ridge-image.webp') center/cover no-repeat;">
+        <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white bg-dark bg-opacity-50 text-center px-3">
+          <h1 class="display-4 fw-bold">Amazing Travels</h1>
+          <p class="lead fs-4 mb-2">You get to see this amazing world</p>
+          <p class="small text-light">Explore top regional destinations, guides, and hidden gems across America.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="container mb-5">
+
+      <!-- Controls: Search, Filter, Sort, Category, Tag -->
+      <section class="bg-white p-4 rounded border shadow-sm mb-5">
+        <h3 class="h5 fw-bold mb-3">Explore & Filter Destinations</h3>
+        <div class="row g-3">
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search title or description...">
+          </div>
+          <div class="col-md-2">
+            <select class="form-select" id="categoryFilter">
+              <option value="">All Categories</option>
+              <option value="Southwest">Southwest</option>
+              <option value="Northeast">Northeast</option>
+              <option value="Midwest">Midwest</option>
+              <option value="Southeast">Southeast</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select class="form-select" id="tagFilter">
+              <option value="">All Tags</option>
+              <option value="Exploration">Exploration</option>
+              <option value="Family">Family</option>
+              <option value="Nature">Nature</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" id="sortControl">
+              <option value="date-desc">Sort: Date (Newest)</option>
+              <option value="date-asc">Sort: Date (Oldest)</option>
+              <option value="title-asc">Sort: Title (A-Z)</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-dark w-100" onclick="applyFilters()">Apply</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Travel Regions & Content Cards -->
+      <div class="travel-container mb-5">
+        <h2 class="h4 fw-bold mb-4">Featured Travel Regions</h2>
+        <div class="travel-regions row g-4">
+          
+          <!-- Card 1: Southwest -->
+          <div class="col-md-6 col-lg-3 southwest">
+            <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary">Southwest</span>
+                <span class="badge bg-success">Published</span>
+              </div>
+              <img src="images/albuquerque.jpg" class="card-img-top rounded mb-3" alt="Albuquerque" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Albuquerque</h4>
+              <p class="small text-muted mb-2">Southwest Explorations</p>
+              <p class="small text-secondary flex-grow-1">See the sites of Albuquerque, Phoenix, and Las Vegas.</p>
+              
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Exploration</span>
+                <span class="badge bg-light text-dark border">#Desert</span>
+              </div>
+
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> Johnathan Ballard</div>
+                <div><i class="bi bi-calendar"></i> Oct 15, 2026</div>
+              </div>
+
+              <a href="https://www.visitalbuquerque.org" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Albuquerque</a>
+              
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (1):</strong>
+                <p class="mb-0 mt-1"><em>User123:</em> Beautiful hot air balloons!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Northeast -->
+          <div class="col-md-6 col-lg-3 northeast">
+            <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary">Northeast</span>
+                <span class="badge bg-success">Published</span>
+              </div>
+              <img src="images/hershey-park.jpg" class="card-img-top rounded mb-3" alt="Hershey Park" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Hershey Park</h4>
+              <p class="small text-muted mb-2">Wonderous beginnings</p>
+              <p class="small text-secondary flex-grow-1">Discover New York City, Boston, and Philadelphia.</p>
+              
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Family</span>
+                <span class="badge bg-light text-dark border">#ThemePark</span>
+              </div>
+
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> AdminManager</div>
+                <div><i class="bi bi-calendar"></i> Sep 28, 2026</div>
+              </div>
+
+              <a href="https://www.hersheypa.com/" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Hershey Park</a>
+
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (1):</strong>
+                <p class="mb-0 mt-1"><em>ChocolateLover:</em> Great theme park!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Midwest -->
+          <div class="col-md-6 col-lg-3 midwest">
+            <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary">Midwest</span>
+                <span class="badge bg-success">Published</span>
+              </div>
+              <img src="images/springfield-missouri.jpg" class="card-img-top rounded mb-3" alt="Springfield, Missouri" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Springfield, Missouri</h4>
+              <p class="small text-muted mb-2">Middle hidden gems</p>
+              <p class="small text-secondary flex-grow-1">Experience Chicago, St. Louis, Minneapolis, and Detroit.</p>
+              
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Midwest</span>
+                <span class="badge bg-light text-dark border">#Nature</span>
+              </div>
+
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> TravelGuide</div>
+                <div><i class="bi bi-calendar"></i> Aug 12, 2026</div>
+              </div>
+
+              <a href="https://www.springfieldmo.org/" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Springfield</a>
+
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (0):</strong>
+                <p class="mb-0 mt-1"><em>No comments yet.</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Southeast -->
+          <div class="col-md-6 col-lg-3 southeast">
+            <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary">Southeast</span>
+                <span class="badge bg-success">Published</span>
+              </div>
+              <img src="images/outer-banks-image.jpg" class="card-img-top rounded mb-3" alt="Outer Banks" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Outer Banks</h4>
+              <p class="small text-muted mb-2">Islands of adventure</p>
+              <p class="small text-secondary flex-grow-1">Explore Atlanta, Nashville, Miami, and Charleston.</p>
+              
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Beach</span>
+                <span class="badge bg-light text-dark border">#Adventure</span>
+              </div>
+
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> Johnathan Ballard</div>
+                <div><i class="bi bi-calendar"></i> Jul 04, 2026</div>
+              </div>
+
+              <a href="https://www.outerbanks.org/" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Outer Banks</a>
+
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (1):</strong>
+                <p class="mb-0 mt-1"><em>OceanFan:</em> Beautiful beaches!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Add New Destination Form -->
+      <section class="bg-white p-4 rounded border shadow-sm my-5">
+        <h3 class="h5 fw-bold mb-3">Add New Travel Destination</h3>
+        <form id="addDestinationForm" onsubmit="handleFormSubmit(event)">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="formTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="formTitle" placeholder="e.g. Grand Canyon" required>
+            </div>
+            <div class="col-md-6">
+              <label for="formCategory" class="form-label">Category</label>
+              <select class="form-select" id="formCategory" required>
+                <option value="">Select Category...</option>
+                <option value="Southwest">Southwest</option>
+                <option value="Northeast">Northeast</option>
+                <option value="Midwest">Midwest</option>
+                <option value="Southeast">Southeast</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="formDescription" class="form-label">Description</label>
+              <textarea class="form-control" id="formDescription" rows="3" placeholder="Enter travel details and highlights..." required></textarea>
+            </div>
+            <div class="col-md-4">
+              <label for="formTags" class="form-label">Tags</label>
+              <input type="text" class="form-control" id="formTags" placeholder="e.g. Nature, Adventure">
+            </div>
+            <div class="col-md-4">
+              <label for="formURL" class="form-label">Website URL</label>
+              <input type="url" class="form-control" id="formURL" placeholder="https://example.com">
+            </div>
+            <div class="col-md-4">
+              <label for="formImage" class="form-label">Image Path / URL</label>
+              <input type="text" class="form-control" id="formImage" placeholder="images/sample.jpg">
+            </div>
+            <div class="col-12 mt-3">
+              <button type="submit" class="btn btn-dark">Submit Destination</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+    </main>
     
-  
-    <!-- <script src="scripts/private-signin.js"></script> -->
-    <footer>
-      <p>2026 Amazing Travels. By Johnathan Ballard.</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-4 mt-5">
+      <div class="container">
+        <p class="small mb-1">&copy; 2026 Amazing Travels. By Johnathan Ballard.</p>
+        <p class="small mb-0">
+          <a href="https://github.com/Johnathan-GIS/" class="text-light me-3" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          <a href="https://github.com/Johnathan-GIS/ballard-bravo-dev-update" class="text-light" target="_blank" rel="noopener noreferrer">Source Code Repository</a>
+        </p>
+      </div>
     </footer>
+
+    <!-- Bootstrap & Page Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
     <script src="scripts/signin.js"></script>
+    <script>
+      function showToast(msg) {
+        document.getElementById('toastMessage').innerText = msg;
+        const toast = new bootstrap.Toast(document.getElementById('statusToast'));
+        toast.show();
+      }
+
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        showToast('Item added successfully!');
+        document.getElementById('addDestinationForm').reset();
+      }
+
+      function signOut() {
+        showToast('You have signed out.');
+      }
+
+      function applyFilters() {
+        showToast('Filters applied.');
+      }
+    </script>
   </body>
 </html>
