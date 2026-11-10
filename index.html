@@ -1,487 +1,332 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Amazing Travels</title>
+    <!-- Bootstrap CSS & Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - Amazing Travels</title>
-  <!-- Bootstrap CSS & Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="styles/style.css">
-</head>
+  <body class="bg-light text-dark">
 
-<body class="bg-light text-dark">
-
-  <!-- Toast / Status Message Container -->
-  <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100">
-    <div id="statusToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
-      aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body" id="toastMessage">
-          Welcome back!
+    <!-- Toast / Status Message Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100">
+      <div id="statusToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body" id="toastMessage">
+            Welcome back!
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-          aria-label="Close"></button>
       </div>
     </div>
-  </div>
 
-  <!-- Layout: Navigation & User Account Header -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm">
-      <div class="container-fluid">
-        <a class="navbar-brand mb-0 h1" href="index.html">🌏 Amazing Travels</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"
-          aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Layout: Navigation & User Account Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand mb-0 h1" href="index.html">🌏 Amazing Travels</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse justify-content-between" id="navLinks">
+            <ul class="navbar-nav align-items-center gap-3">
+              <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="pages/signin.html">Sign In</a></li>
+              <li class="nav-item">
+                <a href="https://github.com/Johnathan-GIS/" class="nav-link" target="_blank" rel="noopener noreferrer">
+                  GitHub Profile <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/Johnathan-GIS/ballard-bravo-dev-update" class="nav-link" target="_blank" rel="noopener noreferrer">
+                  Source Code <i class="bi bi-code-slash"></i>
+                </a>
+              </li>
+            </ul>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navLinks">
-          <ul class="navbar-nav align-items-center gap-3">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-            <li class="nav-item" id="signInNavItem"><a class="nav-link" href="pages/signin.html">Sign In</a></li>
-            <li class="nav-item">
-              <a href="https://github.com/Johnathan-GIS/" class="nav-link" target="_blank" rel="noopener noreferrer">
-                GitHub Profile <i class="bi bi-box-arrow-up-right"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="https://github.com/Johnathan-GIS/ballard-bravo-dev-update" class="nav-link" target="_blank"
-                rel="noopener noreferrer">
-                Source Code <i class="bi bi-code-slash"></i>
-              </a>
-            </li>
-          </ul>
-
-          <!-- User Account Control Status -->
-          <div class="d-flex align-items-center text-light gap-2 mt-3 mt-lg-0" id="userAccountSection">
-            <span class="badge bg-secondary">Guest</span>
-            <span class="small me-2">Not signed in</span>
-            <a href="pages/signin.html" class="btn btn-outline-light btn-sm">Sign In</a>
+            <!-- User Account Control Status -->
+            <div class="d-flex align-items-center text-light gap-2 mt-3 mt-lg-0" id="userAccountSection">
+              <span class="badge bg-primary">Admin</span>
+              <span class="small me-2">User: <strong>Johnathan Ballard</strong></span>
+              <button class="btn btn-outline-light btn-sm" onclick="signOut()">Sign Out</button>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <!-- Stretched Hero Banner Image -->
-  <section class="position-relative overflow-hidden mb-5">
-    <div class="w-100" style="height: 380px; background: url('images/blue-ridge-image.webp') center/cover no-repeat;">
-      <div
-        class="w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white bg-dark bg-opacity-50 text-center px-3">
-        <h1 class="display-4 fw-bold">Amazing Travels</h1>
-        <p class="lead fs-4 mb-2">You get to see this amazing world</p>
-        <p class="small text-light">Explore top regional destinations, guides, and hidden gems across America.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Content Area -->
-  <main class="container mb-5">
-
-    <!-- Controls: Search, Filter, Sort, Category, Tag -->
-    <section class="bg-white p-4 rounded border shadow-sm mb-5">
-      <h3 class="h5 fw-bold mb-3">Explore & Filter Destinations</h3>
-      <div class="row g-3">
-        <div class="col-md-3">
-          <input type="text" class="form-control" id="searchInput" placeholder="Search title or description...">
-        </div>
-        <div class="col-md-2">
-          <select class="form-select" id="categoryFilter">
-            <option value="">All Categories</option>
-            <option value="Southwest">Southwest</option>
-            <option value="Northeast">Northeast</option>
-            <option value="Midwest">Midwest</option>
-            <option value="Southeast">Southeast</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <select class="form-select" id="tagFilter">
-            <option value="">All Tags</option>
-            <option value="Exploration">Exploration</option>
-            <option value="Family">Family</option>
-            <option value="Nature">Nature</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <select class="form-select" id="sortControl">
-            <option value="date-desc">Sort: Date (Newest)</option>
-            <option value="date-asc">Sort: Date (Oldest)</option>
-            <option value="title-asc">Sort: Title (A-Z)</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <button class="btn btn-dark w-100" onclick="applyFilters()">Apply</button>
+    <!-- Stretched Hero Banner Image -->
+    <section class="position-relative overflow-hidden mb-5">
+      <div class="w-100" style="height: 380px; background: url('images/blue-ridge-image.webp') center/cover no-repeat;">
+        <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white bg-dark bg-opacity-50 text-center px-3">
+          <h1 class="display-4 fw-bold">Amazing Travels</h1>
+          <p class="lead fs-4 mb-2">You get to see this amazing world</p>
+          <p class="small text-light">Explore top regional destinations, guides, and hidden gems across America.</p>
         </div>
       </div>
     </section>
 
-    <!-- Travel Regions & Content Cards (Rendered Dynamically via JS) -->
-    <div class="travel-container mb-5">
-      <h2 class="h4 fw-bold mb-4">Featured Travel Regions</h2>
-      <div class="travel-regions row g-4">
-        <!-- Dynamic cards will be populated here by JavaScript -->
-      </div>
-    </div>
+    <!-- Main Content Area -->
+    <main class="container mb-5">
 
-    <!-- Add New Destination Form -->
-    <section class="bg-white p-4 rounded border shadow-sm my-5">
-      <h3 class="h5 fw-bold mb-3">Add New Travel Destination</h3>
-      <form id="addDestinationForm" onsubmit="handleFormSubmit(event)">
+      <!-- Controls: Search, Filter, Sort, Category, Tag -->
+      <section class="bg-white p-4 rounded border shadow-sm mb-5">
+        <h3 class="h5 fw-bold mb-3">Explore & Filter Destinations</h3>
         <div class="row g-3">
-          <div class="col-md-6">
-            <label for="formTitle" class="form-label">Title</label>
-            <input type="text" class="form-control" id="formTitle" placeholder="e.g. Grand Canyon" required>
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search title or description...">
           </div>
-          <div class="col-md-6">
-            <label for="formCategory" class="form-label">Category</label>
-            <select class="form-select" id="formCategory" required>
-              <option value="">Select Category...</option>
+          <div class="col-md-2">
+            <select class="form-select" id="categoryFilter">
+              <option value="">All Categories</option>
               <option value="Southwest">Southwest</option>
               <option value="Northeast">Northeast</option>
               <option value="Midwest">Midwest</option>
               <option value="Southeast">Southeast</option>
             </select>
           </div>
-          <div class="col-12">
-            <label for="formDescription" class="form-label">Description</label>
-            <textarea class="form-control" id="formDescription" rows="3"
-              placeholder="Enter travel details and highlights..." required></textarea>
+          <div class="col-md-2">
+            <select class="form-select" id="tagFilter">
+              <option value="">All Tags</option>
+              <option value="Exploration">Exploration</option>
+              <option value="Family">Family</option>
+              <option value="Nature">Nature</option>
+            </select>
           </div>
-          <div class="col-md-4">
-            <label for="formTags" class="form-label">Tags</label>
-            <input type="text" class="form-control" id="formTags" placeholder="e.g. Nature, Adventure">
+          <div class="col-md-3">
+            <select class="form-select" id="sortControl">
+              <option value="date-desc">Sort: Date (Newest)</option>
+              <option value="date-asc">Sort: Date (Oldest)</option>
+              <option value="title-asc">Sort: Title (A-Z)</option>
+            </select>
           </div>
-          <div class="col-md-4">
-            <label for="formURL" class="form-label">Website URL</label>
-            <input type="url" class="form-control" id="formURL" placeholder="https://example.com">
-          </div>
-          <div class="col-md-4">
-            <label for="formImage" class="form-label">Image Path / URL</label>
-            <input type="text" class="form-control" id="formImage" placeholder="images/sample.jpg">
-          </div>
-          <div class="col-12 mt-3">
-            <button type="submit" class="btn btn-dark">Submit Destination</button>
+          <div class="col-md-2">
+            <button class="btn btn-dark w-100" onclick="applyFilters()">Apply</button>
           </div>
         </div>
-      </form>
-    </section>
+      </section>
 
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-light text-center py-4 mt-5">
-    <div class="container">
-      <p class="small mb-1">&copy; 2026 Amazing Travels. By Johnathan Ballard.</p>
-      <p class="small mb-0">
-        <a href="https://github.com/Johnathan-GIS/" class="text-light me-3" target="_blank"
-          rel="noopener noreferrer">GitHub Profile</a>
-        <a href="https://github.com/Johnathan-GIS/ballard-bravo-dev-update" class="text-light" target="_blank"
-          rel="noopener noreferrer">Source Code Repository</a>
-      </p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap & Page Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
-  <script src="scripts/signin.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      let appState = JSON.parse(sessionStorage.getItem("appState"));
-
-      // If appState doesn't exist or data is empty, fetch initial JSON records
-      if (!appState || !appState.data || appState.data.length === 0) {
-        try {
-          const response = await fetch("data/destinations.json");
-          if (!response.ok) throw new Error("Could not load starting data.");
-
-          const startingData = await response.json();
-
-          appState = {
-            app: { name: "Amazing Travels", version: "0.3" },
-            user: appState ? appState.user : { username: null, authenticated: false, role: null },
-            data: startingData,
-            session: { started: new Date().toISOString() }
-          };
-
-          sessionStorage.setItem("appState", JSON.stringify(appState));
-          console.log("[DATA] Loaded starting records from destinations.json");
-        } catch (error) {
-          console.error("[ERROR]", error);
-          showToast("Could not load starting data.");
-        }
-      }
-
-      // Update UI navbar based on current user session & authorization
-      updateUserInterface(appState);
-
-      // Render destination cards into the DOM
-      renderDestinations(appState.data, appState.user);
-
-      // Log complete state object as JSON in console (Requirement #10)
-      console.log("[APP STATE]", appState);
-      console.log("[APP STATE JSON]", JSON.stringify(appState, null, 2));
-    });
-
-    // Render cards dynamically with role-based features (AuthZ)
-    function renderDestinations(records, user) {
-      const container = document.querySelector(".travel-regions");
-      if (!container) return;
-
-      container.innerHTML = "";
-
-      if (!records || records.length === 0) {
-        container.innerHTML = `<p class="text-muted">No records found.</p>`;
-        return;
-      }
-
-      records.forEach((item) => {
-        const cardCol = document.createElement("div");
-        cardCol.className = `col-md-6 col-lg-3 ${item.category ? item.category.toLowerCase() : ''}`;
-
-        // Authorization check: Only Admins see the delete button
-        const deleteButtonHtml = (user && user.role === "admin")
-          ? `<button class="btn btn-outline-danger btn-sm w-100 mt-2" onclick="deleteRecord(${item.id})">Delete (Admin)</button>`
-          : '';
-
-        cardCol.innerHTML = `
+      <!-- Travel Regions & Content Cards -->
+      <div class="travel-container mb-5">
+        <h2 class="h4 fw-bold mb-4">Featured Travel Regions</h2>
+        <div class="travel-regions row g-4">
+          
+          <!-- Card 1: Southwest -->
+          <div class="col-md-6 col-lg-3 southwest">
             <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
               <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="badge bg-primary">${item.category}</span>
+                <span class="badge bg-primary">Southwest</span>
                 <span class="badge bg-success">Published</span>
               </div>
-              <img src="${item.image || 'images/albuquerque.jpg'}" class="card-img-top rounded mb-3" alt="${item.title}" style="height: 160px; object-fit: cover;">
-              <h4 class="h6 fw-bold mb-1">${item.title}</h4>
-              <p class="small text-muted mb-2">Tag: #${item.tag || 'Exploration'}</p>
-              <p class="small text-secondary flex-grow-1">${item.description}</p>
+              <img src="images/albuquerque.jpg" class="card-img-top rounded mb-3" alt="Albuquerque" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Albuquerque</h4>
+              <p class="small text-muted mb-2">Southwest Explorations</p>
+              <p class="small text-secondary flex-grow-1">See the sites of Albuquerque, Phoenix, and Las Vegas.</p>
               
-              <div class="small text-muted mb-3 border-top pt-2">
-                <div><i class="bi bi-person"></i> ${item.author || 'Guest'}</div>
-                <div><i class="bi bi-calendar"></i> ${item.date || 'Today'}</div>
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Exploration</span>
+                <span class="badge bg-light text-dark border">#Desert</span>
               </div>
 
-              <a href="${item.url || '#'}" class="btn btn-dark btn-sm w-100 mb-1" target="_blank" rel="noopener noreferrer">Visit Link</a>
-              ${deleteButtonHtml}
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> Johnathan Ballard</div>
+                <div><i class="bi bi-calendar"></i> Oct 15, 2026</div>
+              </div>
+
+              <a href="https://www.visitalbuquerque.org" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Albuquerque</a>
+              
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (1):</strong>
+                <p class="mb-0 mt-1"><em>User123:</em> Beautiful hot air balloons!</p>
+              </div>
             </div>
-          `;
-        container.appendChild(cardCol);
-      });
-    }
-
-    // CREATE Operation: Add new record
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      try {
-        let appState = JSON.parse(sessionStorage.getItem("appState"));
-        if (!appState) return;
-
-        const newRecord = {
-          id: Date.now(),
-          title: document.getElementById("formTitle").value,
-          category: document.getElementById("formCategory").value,
-          description: document.getElementById("formDescription").value,
-          tag: document.getElementById("formTags").value || "Exploration",
-          url: document.getElementById("formURL").value || "#",
-          image: document.getElementById("formImage").value || "images/albuquerque.jpg",
-          author: appState.user.authenticated ? appState.user.username : "Guest",
-          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-          comments: []
-        };
-
-        appState.data.push(newRecord);
-        sessionStorage.setItem("appState", JSON.stringify(appState));
-
-        console.log(`[CREATE] Record ${newRecord.id} added`);
-        showToast("Item added successfully!");
-
-        document.getElementById("addDestinationForm").reset();
-        renderDestinations(appState.data, appState.user);
-      } catch (error) {
-        console.error("[ERROR]", error);
-        showToast("Unable to save changes.");
-      }
-    }
-
-    // DELETE Operation (Admin-only Authorization Check)
-    function deleteRecord(id) {
-      try {
-        let appState = JSON.parse(sessionStorage.getItem("appState"));
-        if (!appState || appState.user.role !== "admin") {
-          showToast("You are not authorized to access this feature.");
-          return;
-        }
-
-        appState.data = appState.data.filter(item => item.id !== id);
-        sessionStorage.setItem("appState", JSON.stringify(appState));
-
-        console.log(`[DELETE] Record ${id} removed`);
-        showToast("Record deleted successfully.");
-        renderDestinations(appState.data, appState.user);
-      } catch (error) {
-        console.error("[ERROR]", error);
-        showToast("Unable to delete record.");
-      }
-    }
-
-    // Sign Out Function
-    function signOut() {
-      let appState = JSON.parse(sessionStorage.getItem("appState"));
-      if (appState) {
-        appState.user = { username: null, authenticated: false, role: null };
-        sessionStorage.setItem("appState", JSON.stringify(appState));
-      }
-      sessionStorage.removeItem("signedIn");
-      showToast("You have signed out.");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    }
-
-    // Update Navigation Bar & Admin link visibility based on session state
-    function updateUserInterface(appState) {
-      const userSection = document.getElementById("userAccountSection");
-      const navLinksList = document.querySelector(".navbar-nav");
-
-      if (appState.user && appState.user.authenticated) {
-        if (userSection) {
-          userSection.innerHTML = `
-              <span class="badge bg-${appState.user.role === 'admin' ? 'danger' : 'primary'}">${appState.user.role.toUpperCase()}</span>
-              <span class="small me-2 text-white">User: <strong>${appState.user.username}</strong></span>
-              <button class="btn btn-outline-light btn-sm" onclick="signOut()">Sign Out</button>
-            `;
-        }
-
-        // If role is admin, inject Admin Dashboard link into navbar
-        if (appState.user.role === "admin" && navLinksList) {
-          if (!document.getElementById("adminNavLink")) {
-            const adminLi = document.createElement("li");
-            adminLi.className = "nav-item";
-            adminLi.id = "adminNavLink";
-            adminLi.innerHTML = `<a class="nav-link text-warning fw-bold" href="pages/admin.html">Admin Dashboard</a>`;
-            navLinksList.appendChild(adminLi);
-          }
-        }
-      } else {
-        if (userSection) {
-          userSection.innerHTML = `
-              <a href="pages/signin.html" class="btn btn-outline-light btn-sm">Sign In</a>
-            `;
-        }
-      }
-    }
-
-    function renderDestinations(records, user) {
-      const container = document.querySelector(".travel-regions");
-      if (!container) return;
-
-      container.innerHTML = "";
-
-      if (!records || records.length === 0) {
-        container.innerHTML = `<p class="text-muted">No records found.</p>`;
-        return;
-      }
-
-      records.forEach((item) => {
-        const cardCol = document.createElement("div");
-        cardCol.className = `col-md-6 col-lg-3 ${item.category ? item.category.toLowerCase() : ''}`;
-
-        // Edit and Delete authorization (Admins or authors can edit/delete)
-        const canModify = user && (user.role === "admin" || user.username === item.author);
-        
-        const actionButtonsHtml = canModify ? `
-          <div class="d-flex gap-2 mt-2">
-            <button class="btn btn-outline-secondary btn-sm w-50" onclick="editRecord(${item.id})">Edit</button>
-            <button class="btn btn-outline-danger btn-sm w-50" onclick="deleteRecord(${item.id})">Delete</button>
           </div>
-        ` : '';
 
-        cardCol.innerHTML = `
+          <!-- Card 2: Northeast -->
+          <div class="col-md-6 col-lg-3 northeast">
             <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
               <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="badge bg-primary">${item.category}</span>
+                <span class="badge bg-primary">Northeast</span>
                 <span class="badge bg-success">Published</span>
               </div>
-              <img src="${item.image || 'images/albuquerque.jpg'}" class="card-img-top rounded mb-3" alt="${item.title}" style="height: 160px; object-fit: cover;">
-              <h4 class="h6 fw-bold mb-1">${item.title}</h4>
-              <p class="small text-muted mb-2">Tag: #${item.tag || 'Exploration'}</p>
-              <p class="small text-secondary flex-grow-1">${item.description}</p>
+              <img src="images/hershey-park.jpg" class="card-img-top rounded mb-3" alt="Hershey Park" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Hershey Park</h4>
+              <p class="small text-muted mb-2">Wonderous beginnings</p>
+              <p class="small text-secondary flex-grow-1">Discover New York City, Boston, and Philadelphia.</p>
               
-              <div class="small text-muted mb-3 border-top pt-2">
-                <div><i class="bi bi-person"></i> ${item.author || 'Guest'}</div>
-                <div><i class="bi bi-calendar"></i> ${item.date || 'Today'}</div>
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Family</span>
+                <span class="badge bg-light text-dark border">#ThemePark</span>
               </div>
 
-              <a href="${item.url || '#'}" class="btn btn-dark btn-sm w-100 mb-1" target="_blank" rel="noopener noreferrer">Visit Link</a>
-              ${actionButtonsHtml}
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> AdminManager</div>
+                <div><i class="bi bi-calendar"></i> Sep 28, 2026</div>
+              </div>
+
+              <a href="https://www.hersheypa.com/" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Hershey Park</a>
+
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (1):</strong>
+                <p class="mb-0 mt-1"><em>ChocolateLover:</em> Great theme park!</p>
+              </div>
             </div>
-          `;
-        container.appendChild(cardCol);
-      });
-    }
+          </div>
 
-    // UPDATE Operation
-    function editRecord(id) {
-      let appState = JSON.parse(sessionStorage.getItem("appState"));
-      if (!appState) return;
+          <!-- Card 3: Midwest -->
+          <div class="col-md-6 col-lg-3 midwest">
+            <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary">Midwest</span>
+                <span class="badge bg-success">Published</span>
+              </div>
+              <img src="images/springfield-missouri.jpg" class="card-img-top rounded mb-3" alt="Springfield, Missouri" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Springfield, Missouri</h4>
+              <p class="small text-muted mb-2">Middle hidden gems</p>
+              <p class="small text-secondary flex-grow-1">Experience Chicago, St. Louis, Minneapolis, and Detroit.</p>
+              
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Midwest</span>
+                <span class="badge bg-light text-dark border">#Nature</span>
+              </div>
 
-      const record = appState.data.find(item => item.id === id);
-      if (!record) return;
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> TravelGuide</div>
+                <div><i class="bi bi-calendar"></i> Aug 12, 2026</div>
+              </div>
 
-      const newTitle = prompt("Edit Destination Title:", record.title);
-      if (newTitle === null) return; // Cancelled
+              <a href="https://www.springfieldmo.org/" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Springfield</a>
 
-      const newDesc = prompt("Edit Destination Description:", record.description);
-      if (newDesc === null) return;
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (0):</strong>
+                <p class="mb-0 mt-1"><em>No comments yet.</em></p>
+              </div>
+            </div>
+          </div>
 
-      record.title = newTitle.trim() || record.title;
-      record.description = newDesc.trim() || record.description;
+          <!-- Card 4: Southeast -->
+          <div class="col-md-6 col-lg-3 southeast">
+            <div class="p-3 border bg-white rounded h-100 shadow-sm d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary">Southeast</span>
+                <span class="badge bg-success">Published</span>
+              </div>
+              <img src="images/outer-banks-image.jpg" class="card-img-top rounded mb-3" alt="Outer Banks" style="height: 160px; object-fit: cover;">
+              <h4 class="h6 fw-bold mb-1">Outer Banks</h4>
+              <p class="small text-muted mb-2">Islands of adventure</p>
+              <p class="small text-secondary flex-grow-1">Explore Atlanta, Nashville, Miami, and Charleston.</p>
+              
+              <div class="mb-2">
+                <span class="badge bg-light text-dark border">#Beach</span>
+                <span class="badge bg-light text-dark border">#Adventure</span>
+              </div>
 
-      sessionStorage.setItem("appState", JSON.stringify(appState));
-      showToast("Record updated successfully!");
-      renderDestinations(appState.data, appState.user);
-    }
+              <div class="small text-muted mb-3 border-top pt-2">
+                <div><i class="bi bi-person"></i> Johnathan Ballard</div>
+                <div><i class="bi bi-calendar"></i> Jul 04, 2026</div>
+              </div>
 
-    document.addEventListener("DOMContentLoaded", async () => {
-      let appState = JSON.parse(sessionStorage.getItem("appState"));
+              <a href="https://www.outerbanks.org/" class="btn btn-dark btn-sm w-100 mb-3" target="_blank" rel="noopener noreferrer">Visit Outer Banks</a>
 
-      // Only fetch starting JSON if appState doesn't exist at all
-      if (!appState) {
-        try {
-          const response = await fetch("data/destinations.json");
-          if (!response.ok) throw new Error("Could not load starting data.");
+              <div class="bg-light p-2 rounded small text-muted">
+                <strong>Comments (1):</strong>
+                <p class="mb-0 mt-1"><em>OceanFan:</em> Beautiful beaches!</p>
+              </div>
+            </div>
+          </div>
 
-          const startingData = await response.json();
+        </div>
+      </div>
 
-          appState = {
-            app: { name: "Amazing Travels", version: "0.3" },
-            user: { username: null, authenticated: false, role: null },
-            data: startingData,
-            session: { started: new Date().toISOString() }
-          };
+      <!-- Add New Destination Form -->
+      <section class="bg-white p-4 rounded border shadow-sm my-5">
+        <h3 class="h5 fw-bold mb-3">Add New Travel Destination</h3>
+        <form id="addDestinationForm" onsubmit="handleFormSubmit(event)">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="formTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="formTitle" placeholder="e.g. Grand Canyon" required>
+            </div>
+            <div class="col-md-6">
+              <label for="formCategory" class="form-label">Category</label>
+              <select class="form-select" id="formCategory" required>
+                <option value="">Select Category...</option>
+                <option value="Southwest">Southwest</option>
+                <option value="Northeast">Northeast</option>
+                <option value="Midwest">Midwest</option>
+                <option value="Southeast">Southeast</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="formDescription" class="form-label">Description</label>
+              <textarea class="form-control" id="formDescription" rows="3" placeholder="Enter travel details and highlights..." required></textarea>
+            </div>
+            <div class="col-md-4">
+              <label for="formTags" class="form-label">Tags</label>
+              <input type="text" class="form-control" id="formTags" placeholder="e.g. Nature, Adventure">
+            </div>
+            <div class="col-md-4">
+              <label for="formURL" class="form-label">Website URL</label>
+              <input type="url" class="form-control" id="formURL" placeholder="https://example.com">
+            </div>
+            <div class="col-md-4">
+              <label for="formImage" class="form-label">Image Path / URL</label>
+              <input type="text" class="form-control" id="formImage" placeholder="images/sample.jpg">
+            </div>
+            <div class="col-12 mt-3">
+              <button type="submit" class="btn btn-dark">Submit Destination</button>
+            </div>
+          </div>
+        </form>
+      </section>
 
-          sessionStorage.setItem("appState", JSON.stringify(appState));
-          console.log("[DATA] Loaded starting records from destinations.json");
-        } catch (error) {
-          console.error("[ERROR]", error);
-          showToast("Could not load starting data.");
-        }
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-4 mt-5">
+      <div class="container">
+        <p class="small mb-1">&copy; 2026 Amazing Travels. By Johnathan Ballard.</p>
+        <p class="small mb-0">
+          <a href="https://github.com/Johnathan-GIS/" class="text-light me-3" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          <a href="https://github.com/Johnathan-GIS/ballard-bravo-dev-update" class="text-light" target="_blank" rel="noopener noreferrer">Source Code Repository</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap & Page Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+    <script src="scripts/signin.js"></script>
+    <script>
+      function showToast(msg) {
+        document.getElementById('toastMessage').innerText = msg;
+        const toast = new bootstrap.Toast(document.getElementById('statusToast'));
+        toast.show();
       }
 
-      updateUserInterface(appState);
-      renderDestinations(appState.data, appState.user);
-    });
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        showToast('Item added successfully!');
+        document.getElementById('addDestinationForm').reset();
+      }
 
-    function showToast(msg) {
-      document.getElementById('toastMessage').innerText = msg;
-      const toast = new bootstrap.Toast(document.getElementById('statusToast'));
-      toast.show();
-    }
+      function signOut() {
+        showToast('You have signed out.');
+      }
 
-    function applyFilters() {
-      showToast('Filters applied.');
-    }
-  </script>
-</body>
-
+      function applyFilters() {
+        showToast('Filters applied.');
+      }
+    </script>
+  </body>
 </html>
